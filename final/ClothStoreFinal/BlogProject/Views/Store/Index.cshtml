@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ClothStore.Models.Cloth>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div id="store">
+    <h1 class="storeTitle">OCS</h1>
+    <div class="row">
+        <div class="col-md-3">
+            @using (Html.BeginForm("FilterCloth", "Store"))
+            {
+                @Html.AntiForgeryToken()
+
+                <div id="filterForm">
+                    <p>
+                        <label for="provider">Provider</label>
+                        <select name="Provider" class="form-control">
+                            <option>All</option>
+                            @foreach (var p in ViewBag.providers)
+                            {
+                                <option>@p.Name</option>
+                            }
+                        </select>
+                    </p>
+                    <p>
+                        <label for="color">Color</label>
+                        <input class="form-control" name="Color" id="color" type="text"/>
+                    </p>
+                    <p>
+                        <label for="price">Price</label>
+                        <input class="form-control" type="range" id="price" min="50" max="5000" value="5000" name="Price">
+                    </p>
+                    <p>
+                        <input type="submit" value="Filter" class="btn btn-primary" />
+                    </p>
+                </div>
+            }
+        </div>
+        <div class="col-md-9">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <div class="clothContainer">
+                        <div class="clothImage" style="background-image: url(@item.Image)"></div>
+                        <div>@item.Description</div>
+                        <div>@item.Price $</div>
+                        <div>@item.Quantity left</div>
+                        @if (!string.IsNullOrEmpty(@item.Color))
+                        {
+                            <div>Color: @item.Color</div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

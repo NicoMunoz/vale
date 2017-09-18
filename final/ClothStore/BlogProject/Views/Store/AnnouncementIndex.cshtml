@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ClothStore.Models.Announcement>
+@{
+    ViewBag.Title = "Announcement Index";
+}
+
+<h2 class="managementModelTitle">Announcements</h2>
+<p>
+    @Html.ActionLink("Create New", "CreateAnnouncement")
+</p>
+
+<table class="table">
+    <tr> 
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditAnnouncement", new { id=item.ID })
+            </td>
+        </tr>
+    }
+
+</table>

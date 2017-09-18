@@ -1,0 +1,45 @@
+﻿@model BlogProject.Models.Post
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <section>
+        <article class="blogPost">
+            <header>
+                <h2>@Model.Title</h2>
+                <p>
+                    Posted on @Model.PublishDate by <a href="@Model.AuthorWebSite">@Model.AuthorName</a> -
+                    <a href="#comments">@Model.Comments.Count Comments</a>
+                </p>
+            </header>
+            <div>
+                <p>@Model.Content</p>
+                @if (@Model.Image != null)
+                {
+                    <img src="@Model.Image" />
+                }
+                @if (@Model.Video != null)
+                {
+                    <video controls="controls">
+                        <source src="@Model.Video" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                }
+            </div>
+        </article>
+    </section>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="blogButton deleteButtons form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Management")
+        </div>
+    }
+</div>

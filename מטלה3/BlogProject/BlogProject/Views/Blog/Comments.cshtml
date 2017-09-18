@@ -1,0 +1,50 @@
+﻿@model IEnumerable<BlogProject.Models.Comment>
+
+@{
+    ViewBag.Title = "Comments";
+}
+
+<h2>Comments</h2>
+
+<table class="table">
+    <tr>    
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AuthorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AuthorWebSite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.content)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorWebSite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.content)
+            </td>
+            <td class="blogButton">
+                @Html.ActionLink("Delete", "DeleteComment", new { id = item.ID }) 
+            </td>
+        </tr>
+    }
+</table>
+
+<p class="blogButton">
+    @Html.ActionLink("Back to List", "Management")
+</p>

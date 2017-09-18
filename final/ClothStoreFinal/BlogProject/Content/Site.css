@@ -1,0 +1,152 @@
+﻿@font-face {
+    font-family: 'centabel';
+    src: url('../fonts/centabel.eot');
+    src: url('../fonts/centabel.eot?#iefix') format('embedded-opentype'), url('../fonts/centabelBook.woff') format('woff'), url('../fonts/centabelBook.ttf') format('truetype'), url('../fonts/centabelBook.svg#glyphicons-halflingsregular') format('svg');
+}
+
+body {
+    font-family: 'centabel' !important;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'centabel' !important;
+}
+
+#home {
+    text-align: center;
+}
+
+#store .storeTitle {
+    text-align: center;
+}
+
+#home #storeCarousel .carousel-inner>.item>img, #storeCarousel .carousel-inner>.item>a>img {
+    width: 100%;
+}
+
+#home #storeCarousel {
+    margin: 3% 0;
+}
+
+.storeTitle {
+    text-shadow: 0 2px 6px rgb(96, 94, 94); 
+    color: #8c2044;
+}
+
+#home .enterLink {
+    font-size: 16px;
+    -webkit-transition: background-color 1.5s ease-out;
+    -moz-transition: background-color 1.5s ease-out;
+    -o-transition: background-color 1.5s ease-out;
+    transition: background-color 1.5s ease-out;
+}
+
+#home .enterLink:hover {
+    background-color: #222222;
+}
+
+.badge.linkBtn {
+    padding: 2% 3%;
+    background-color: #8c2044;
+    font-weight: normal;
+}
+
+#clothForm .btn, #filterForm .btn {
+    background-color: #8c2044;
+    border-color: transparent;
+}
+
+#providerCloth {
+    text-align: center;
+}
+
+.clothContainer {
+    border: 1px solid #dedede;
+    padding: 5%;
+    margin: 4% 2%;
+    border-radius: 10px;
+    height: 380px;
+}
+
+.clothContainer .clothImage {
+    width: 100%;
+    height: 77%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    margin-bottom: 3%;
+}
+
+#filterForm {
+    background-color: #dedede;
+    padding: 5%;
+    border-radius: 10px;
+    margin: 4% 0;
+}
+
+#filterForm input[type='range'] {
+    cursor: pointer;
+}
+
+#filterForm input[type='range'],
+#filterForm input[type='range']::-webkit-slider-runnable-track,
+#filterForm input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+
+#filterForm input[type='range']::-webkit-slider-runnable-track {
+    width: 200px;
+    height: 5px;
+    background: #AAA;
+}
+#filterForm input[type='range']::-webkit-slider-thumb {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    margin-top: -7px;
+    background: #8c2044;
+    border-radius: 50%;
+} 
+
+#contactUs #map {
+    height: 200px;
+    margin: 0 15%;
+}
+
+footer {
+    background-color: #dedede;
+    padding: 1% 0;
+    margin-top: 1%;
+    text-align: center;
+}
+
+#followUs .fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 67px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
+}
+
+#followUs .fa:hover {
+    opacity: 0.7;
+}
+
+#followUs .fa-facebook {
+    background: #3B5998;
+    color: white;
+}
+
+#followUs .fa-twitter {
+    background: #55ACEE;
+    color: white;
+}
+
+#followUs .fa-snapchat-ghost {
+    background: #fffc00;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}

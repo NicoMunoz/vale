@@ -1,0 +1,39 @@
+﻿@model BlogProject.Models.Post
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <section>
+        <article class="blogPost">
+            <header>
+                <h2>@Model.Title</h2>
+                <p>
+                    Posted on @Model.PublishDate by <a href="@Model.AuthorWebSite">@Model.AuthorName</a> -
+                    <a href="#comments">@Model.Comments.Count Comments</a>
+                </p>
+            </header>
+            <div>
+                <p>@Model.Content</p>
+                @if (@Model.Image != null)
+                {
+                    <img src="@Model.Image" />
+                }
+                @if (@Model.Video != null)
+                {
+                    <video controls="controls">
+                        <source src="@Model.Video" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                }
+            </div>
+        </article>
+    </section>
+</div>
+<p class="blogButton">
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Management")
+</p>

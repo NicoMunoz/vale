@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />-->
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    <!-- Background audio - without controls -->
+    <audio id="BGAudio" autoplay>
+        <source src="~/Content/audio/audio.ogg" type="audio/ogg">
+        <source src="~/Content/audio/audio.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <header>
+        <h1>Ha-Blog Shel Shauli 1</h1>
+    </header>
+
+    <nav>
+        <!-- Navigation -->
+        <ul>
+            <li class="@(ViewBag.Title == "Blog" ? "selected" : "")">@Html.ActionLink("Blog", "Index", "Blog")</li>
+            <li><a href="#">About</a></li>
+            <li class="@(ViewBag.Title == "FanClub" ? "selected" : "")">@Html.ActionLink("Fan Club", "Index", "BlogFans")</li>
+            <li><a href="#">Contact</a></li>
+            <li class="subscribe">
+                <a href="#">
+                    <div id="transDemo2">
+                        <div class="hover">
+                            <img src=http://www.ashlylorenzana.com/wp-content/uploads/2013/12/12065637851779660844SRD_RSS_Logo.svg_.hi_.png width="30" height="30">
+                        </div>
+                        Subscribe via. RSS
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <section id="intro">
+        <!-- Introduction -->
+        <header>
+            <h2>Do you have questions for me?</h2>
+        </header>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
+        <img src="~/Content/images/intro_shauli.png" alt="Shauli" />
+    </section>
+
+    <div id="upperSection">
+        @RenderSection("UpperSection", required: false)
+    </div>
+
+    <div id="content">
+        <div id="mainContent">
+            @RenderBody()
+        </div>
+        <aside>
+            <section>
+                <header>
+                    <h3>Categories</h3>
+                </header>
+                <ul>
+                    <li><a href="#">Lorem ipsum dolor</a></li>
+                    <li><a href="#">Sit amet consectetur</a></li>
+                    <li><a href="#">Adipisicing elit sed</a></li>
+                </ul>
+            </section>
+            <section>
+                <header>
+                    <h3>Archives</h3>
+                </header>
+                <ul>
+                    <li><a href="#">December 2008</a></li>
+                    <li><a href="#">January 2009</a></li>
+                    <li><a href="#">February 2009</a></li>
+                    <li><a href="#">March 2009</a></li>
+                </ul>
+            </section>
+        </aside>
+    </div>
+
+    <div>
+        <footer>
+            <!-- Footer -->
+            <div>
+                <section id="about">
+                    <header>
+                        <h3>About</h3>
+                    </header>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut la</p>
+                </section>
+                <section id="blogroll">
+                    <header>
+                        <h3>Blogroll</h3>
+                    </header>
+                    <ul>
+                        <li><a href="#">NETTUTS+</a></li>
+                        <li><a href="#">FreelanceSwitch</a></li>
+                    </ul>
+                </section>
+                <section id="popular">
+                    <header>
+                        <h3>Popular</h3>
+                    </header>
+                    <ul>
+                        <li><a href="#">This is the title of a blog post</a></li>
+                        <li><a href="#">Lorem ipsum dolor sit amet</a></li>
+                        <li><a href="#">Consectetur adipisicing elit, sed do eiusmod</a></li>
+                    </ul>
+                </section>
+            </div>
+        </footer>
+    </div>
+
+    <!--
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div> -->
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <!--<script src="~/Scripts/bootstrap.min.js"></script>-->
+</body>
+</html>

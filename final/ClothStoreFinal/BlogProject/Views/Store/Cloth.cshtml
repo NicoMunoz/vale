@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ClothStore.Models.Cloth>
+
+@{
+    ViewBag.Title = "Cloth";
+}
+
+<h2 class="storeTitle">@ViewBag.ProviderName Cloth</h2>
+
+@using (Html.BeginForm("ClothCreate", "Store"))
+{
+    @Html.AntiForgeryToken()
+    @Html.Hidden("ProviderID", (string)@ViewBag.ProviderId.ToString())
+
+    <div id="clothForm">
+        <h3 class="storeTitle">Add Cloth:</h3>
+        <hr />
+        <p>
+            <label for="image">Image</label>
+            <input class="form-control" name="Image" id="image" type="text" required />
+        </p>
+        <p>
+            <label for="description">Description</label>
+            <textarea class="form-control" name="Description" id="description" type="text" required></textarea>
+        </p>
+        <p>
+            <label for="price">Price</label>
+            <input class="form-control" name="Price" id="price" type="number" step="0.01" required />
+        </p>
+        <p>
+            <label for="quantity">Quantity</label>
+            <input class="form-control" name="Quantity" id="quantity" type="number" required />
+        </p>
+        <p>
+            <label for="color">Color</label>
+            <input class="form-control" name="Color" id="color" type="text" />
+        </p>
+        <p>
+            <input type="submit" value="Add" class="btn btn-primary" />
+        </p>
+    </div>
+}
+<hr />
+<div>
+    @Html.ActionLink("Back to List", "Index", "Management")
+</div>
+<hr />
+<div id="providerCloth">
+    <div class="row">
+        <div class="col-md-12">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3">
+                    <div class="clothContainer">
+                        <div class="clothImage" style="background-image: url(@item.Image)"></div>
+                        <div>@item.Description</div>
+                        <div>@item.Price $</div>
+                        <div>@item.Quantity left</div>
+                        @if (!string.IsNullOrEmpty(@item.Color))
+                        {
+                            <div>Color: @item.Color</div>
+                        }
+                    </div>
+                    @Html.ActionLink("Delete", "DeleteCloth", "Store", new { id = item.ID }, new { @class = "linkBtn badge" })
+                    @Html.ActionLink("Update", "EditCloth", "Store", new { id = item.ID }, new { @class = "linkBtn badge" })
+                </div>
+            }
+        </div>
+    </div>
+</div>

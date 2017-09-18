@@ -1,0 +1,50 @@
+﻿@model ClothStore.Models.Cloth
+
+@{
+    ViewBag.Title = "EditCloth";
+}
+
+<h2 class="storeTitle">Edit Cloth</h2>
+<hr />
+@using (Html.BeginForm("EditCloth", "Store"))
+{
+    @Html.AntiForgeryToken()
+    @Html.Hidden("ProviderID", Model.ProviderID)
+    @Html.Hidden("AddedDate", Model.AddedDate)
+    @Html.Hidden("Provider", Model.Provider)
+
+    <div id="clothForm">
+        <p>
+            <label for="image">Image</label>
+            @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+        </p>
+        <p>
+            <label for="description">Description</label>
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </p>
+        <p>
+            <label for="price">Price</label>
+            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+        </p>
+        <p>
+            <label for="quantity">Quantity</label>
+            @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+        </p>
+        <p>
+            <label for="color">Color</label>
+            @Html.EditorFor(model => model.Color, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })
+        </p>
+        <p>
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </p>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "Management")
+</div>

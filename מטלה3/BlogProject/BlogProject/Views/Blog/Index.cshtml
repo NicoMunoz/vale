@@ -1,0 +1,105 @@
+﻿@model IEnumerable<BlogProject.Models.Post>
+
+@{
+    ViewBag.Title = "Blog";
+}
+
+@section UpperSection {
+    <section id="searchContent">
+        <!-- Search section -->
+        @using (Html.BeginForm("SearchPost", "Blog"))
+        {
+            <h3>Search</h3>
+
+            <label for="date">Date:</label>
+            <input type="date" name="Date">
+
+            <label for="postedBy">Posted by:</label>
+            <input type="text" name="PostedBy">
+
+            <label for="website">Web site</label>
+            <input type="text" name="WebSite">
+
+            <label for="commentContent">Comment content:</label>
+            <input type="text" name="CommentContent">
+
+            <label for="minComments">Minimal number of comments:</label>
+            <input type="range" name="MinComments" min="0" max="10" value="0">
+
+            <input type="reset" value="Reset">
+            <input type="submit" value="Search">
+        }
+    </section>
+}
+
+@foreach (var item in Model)
+{
+    <section>
+        <article class="blogPost">
+            <header>
+                <h2>@item.Title</h2>
+                <p>
+                    Posted on @item.PublishDate by <a href="@item.AuthorWebSite">@item.AuthorName</a> -
+                    <a href="#comments">@item.Comments.Count Comments</a>
+                </p>
+            </header>
+            <div>
+                <p>@item.Content</p>
+                @if (@item.Image != null)
+                {
+                    <img src="@item.Image" />
+                }
+                @if (@item.Video != null)
+                {
+                    <video controls="controls">
+                        <source src="@item.Video" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                }
+            </div>
+        </article>
+    </section>
+    if (@item.Comments.Count > 0)
+    {
+        <section id="comments">
+            <h3>Comments</h3>
+            @foreach (var comment in item.Comments)
+            {
+                <article>
+                    <header>
+                        <h4>@comment.Title</h4>
+                        <a href="@comment.AuthorWebSite">@comment.AuthorName</a>
+                    </header>
+                    <p>@comment.content</p>
+                </article>
+            }
+        </section>
+    }
+    using (Html.BeginForm("CreateComment", "Blog"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("PostID", item.ID)
+        <div class="commentForm">
+            <h3>Post a comment</h3>
+            <p>
+                <label for="name">Name</label>
+                <input name="AuthorName" id="name" type="text" required />
+            </p>
+            <p>
+                <label for="website">Web Site</label>
+                <input name="AuthorWebSite" id="website" type="text" required />
+            </p>
+            <p>
+                <label for="title">Title</label>
+                <input name="Title" id="title" type="text" required />
+            </p>
+            <p>
+                <label for="comment">Comment</label>
+                <textarea name="content" id="comment" type="text" required></textarea>
+            </p>
+            <p>
+                <input type="submit" value="Post comment" />
+            </p>
+        </div>
+    }
+}

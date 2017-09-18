@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloth Store</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+<div class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("OCS", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Store", "Index", "Store")</li>
+                <li>@Html.ActionLink("Management", "Index", "Management")</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    <div class="container">
+        @RenderBody()
+    </div>
+<footer class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <h4 style="font-weight: bold">Our philosophy</h4>
+            <p>Our philosophy is pretty simple: we don’t take fashion or life too seriously.<br/> 
+                Whether you like to keep one step ahead of the trends, or if subtle style is more your thing, we’re sure we’ve got something you’ll love.<br />
+             And with up to 100 pieces hitting site every day and a new collection each week, we never stop - it’s 24/7 fashion at its best.</p>
+        <hr/>
+        </div>
+        <div class="col-md-4" id="followUs">
+            <h4 style="font-weight: bold">Follow us</h4>
+            <p>Follow us on Facebook, Tweeter and Snapchat!</p>
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-snapchat-ghost"></a>
+            <hr />
+        </div>
+        <div class="col-md-4" id="contactUs">
+            <h4 style="font-weight: bold">Contact Us</h4>
+            <div id="map"></div> 
+            <hr />
+        </div>
+    </div>
+</footer>
+    
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<script>
+    function initMap() {
+        var uluru = { lat: 32.086055, lng: 34.796738 };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEoYl6w3g0n85rkCgdZgQXkvym3wu5pzk&callback=initMap">
+</script>
+</body>
+</html>
